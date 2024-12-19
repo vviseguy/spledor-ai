@@ -1,0 +1,937 @@
+[
+    {
+        "card_id": "card1",
+        "tier": "I",
+        "cost": {
+            "diamond": 1,
+            "ruby": 1,
+            "sapphire": 1,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card2",
+        "tier": "I",
+        "cost": {
+            "ruby": 1,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card3",
+        "tier": "I",
+        "cost": {
+            "diamond": 2,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card4",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "ruby": 3,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card5",
+        "tier": "I",
+        "cost": {
+            "emerald": 3
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card6",
+        "tier": "I",
+        "cost": {
+            "diamond": 1,
+            "ruby": 1,
+            "sapphire": 2,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card7",
+        "tier": "I",
+        "cost": {
+            "diamond": 2,
+            "ruby": 1,
+            "sapphire": 2
+        },
+        "points": 0,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card8",
+        "tier": "I",
+        "cost": {
+            "ruby": 4
+        },
+        "points": 1,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card9",
+        "tier": "II",
+        "cost": {
+            "onyx": 2,
+            "sapphire": 2,
+            "emerald": 2
+        },
+        "points": 1,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card10",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "emerald": 3
+        },
+        "points": 1,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card11",
+        "tier": "II",
+        "cost": {
+            "ruby": 2,
+            "sapphire": 1,
+            "emerald": 4
+        },
+        "points": 2,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card12",
+        "tier": "II",
+        "cost": {
+            "diamond": 5
+        },
+        "points": 2,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card13",
+        "tier": "II",
+        "cost": {
+            "onyx": 2,
+            "emerald": 5
+        },
+        "points": 2,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card14",
+        "tier": "II",
+        "cost": {
+            "onyx": 6
+        },
+        "points": 3,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card15",
+        "tier": "III",
+        "cost": {
+            "diamond": 3,
+            "ruby": 3,
+            "sapphire": 3,
+            "emerald": 5
+        },
+        "points": 3,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card16",
+        "tier": "III",
+        "cost": {
+            "onyx": 7
+        },
+        "points": 4,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card17",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "ruby": 6,
+            "sapphire": 3
+        },
+        "points": 4,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card18",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "ruby": 7
+        },
+        "points": 5,
+        "bonus": "onyx"
+    },
+    {
+        "card_id": "card19",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "sapphire": 2,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card20",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "ruby": 2
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card21",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "ruby": 1,
+            "sapphire": 1,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card22",
+        "tier": "I",
+        "cost": {
+            "sapphire": 3
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card23",
+        "tier": "I",
+        "cost": {
+            "sapphire": 2,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card24",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "ruby": 1,
+            "sapphire": 1,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card25",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "diamond": 3,
+            "sapphire": 1
+        },
+        "points": 0,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card26",
+        "tier": "I",
+        "cost": {
+            "emerald": 4
+        },
+        "points": 1,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card27",
+        "tier": "II",
+        "cost": {
+            "onyx": 2,
+            "ruby": 2,
+            "emerald": 3
+        },
+        "points": 1,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card28",
+        "tier": "II",
+        "cost": {
+            "diamond": 2,
+            "ruby": 3,
+            "sapphire": 3
+        },
+        "points": 1,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card29",
+        "tier": "II",
+        "cost": {
+            "diamond": 2,
+            "ruby": 4,
+            "emerald": 1
+        },
+        "points": 2,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card30",
+        "tier": "II",
+        "cost": {
+            "ruby": 5
+        },
+        "points": 2,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card31",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "ruby": 5
+        },
+        "points": 2,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card32",
+        "tier": "II",
+        "cost": {
+            "diamond": 6
+        },
+        "points": 3,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card33",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "ruby": 5,
+            "sapphire": 3,
+            "emerald": 3
+        },
+        "points": 3,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card34",
+        "tier": "III",
+        "cost": {
+            "onyx": 7
+        },
+        "points": 4,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card35",
+        "tier": "III",
+        "cost": {
+            "onyx": 6,
+            "diamond": 3,
+            "ruby": 3
+        },
+        "points": 4,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card36",
+        "tier": "III",
+        "cost": {
+            "onyx": 7,
+            "diamond": 3
+        },
+        "points": 5,
+        "bonus": "diamond"
+    },
+    {
+        "card_id": "card37",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "diamond": 1
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card38",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "diamond": 1,
+            "ruby": 2,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card39",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "diamond": 1,
+            "sapphire": 1,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card40",
+        "tier": "I",
+        "cost": {
+            "ruby": 1,
+            "sapphire": 1,
+            "emerald": 3
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card41",
+        "tier": "I",
+        "cost": {
+            "onyx": 3
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card42",
+        "tier": "I",
+        "cost": {
+            "diamond": 1,
+            "ruby": 2,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card43",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "emerald": 2
+        },
+        "points": 0,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card44",
+        "tier": "I",
+        "cost": {
+            "ruby": 4
+        },
+        "points": 1,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card45",
+        "tier": "II",
+        "cost": {
+            "ruby": 3,
+            "emerald": 2,
+            "sapphire": 2
+        },
+        "points": 1,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card46",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "sapphire": 2,
+            "emerald": 3
+        },
+        "points": 1,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card47",
+        "tier": "II",
+        "cost": {
+            "diamond": 5,
+            "sapphire": 3
+        },
+        "points": 2,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card48",
+        "tier": "II",
+        "cost": {
+            "sapphire": 5
+        },
+        "points": 2,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card49",
+        "tier": "II",
+        "cost": {
+            "onyx": 4,
+            "diamond": 2,
+            "ruby": 1
+        },
+        "points": 2,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card50",
+        "tier": "II",
+        "cost": {
+            "sapphire": 6
+        },
+        "points": 3,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card51",
+        "tier": "III",
+        "cost": {
+            "onyx": 5,
+            "diamond": 3,
+            "sapphire": 3,
+            "emerald": 3
+        },
+        "points": 3,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card52",
+        "tier": "III",
+        "cost": {
+            "diamond": 7
+        },
+        "points": 4,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card53",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "ruby": 6,
+            "sapphire": 3
+        },
+        "points": 4,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card54",
+        "tier": "III",
+        "cost": {
+            "diamond": 7,
+            "sapphire": 3,
+            "emerald": 3
+        },
+        "points": 5,
+        "bonus": "sapphire"
+    },
+    {
+        "card_id": "card55",
+        "tier": "I",
+        "cost": {
+            "diamond": 2,
+            "sapphire": 1
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card56",
+        "tier": "I",
+        "cost": {
+            "ruby": 2,
+            "sapphire": 2
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card57",
+        "tier": "I",
+        "cost": {
+            "diamond": 1,
+            "sapphire": 3,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card58",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "diamond": 1,
+            "ruby": 1,
+            "sapphire": 1
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card59",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "diamond": 1,
+            "ruby": 1,
+            "sapphire": 1
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card60",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "ruby": 2,
+            "sapphire": 1
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card61",
+        "tier": "I",
+        "cost": {
+            "ruby": 3
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card61b",
+        "tier": "I",
+        "cost": {
+            "onyx": 4
+        },
+        "points": 0,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card62",
+        "tier": "II",
+        "cost": {
+            "ruby": 3,
+            "diamond": 3,
+            "emerald": 2
+        },
+        "points": 1,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card63",
+        "tier": "II",
+        "cost": {
+            "onyx": 2,
+            "diamond": 2,
+            "sapphire": 3
+        },
+        "points": 1,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card64",
+        "tier": "II",
+        "cost": {
+            "onyx": 1,
+            "diamond": 4,
+            "ruby": 2
+        },
+        "points": 2,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card65",
+        "tier": "II",
+        "cost": {
+            "sapphire": 5
+        },
+        "points": 2,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card66",
+        "tier": "II",
+        "cost": {
+            "ruby": 5
+        },
+        "points": 2,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card67",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "emerald": 6
+        },
+        "points": 3,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card68",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "diamond": 5,
+            "ruby": 3,
+            "emerald": 3
+        },
+        "points": 3,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card69",
+        "tier": "III",
+        "cost": {
+            "sapphire": 7
+        },
+        "points": 4,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card70",
+        "tier": "III",
+        "cost": {
+            "diamond": 3,
+            "sapphire": 6,
+            "emerald": 3
+        },
+        "points": 4,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card71",
+        "tier": "III",
+        "cost": {
+            "sapphire": 7,
+            "emerald": 3
+        },
+        "points": 5,
+        "bonus": "emerald"
+    },
+    {
+        "card_id": "card72",
+        "tier": "I",
+        "cost": {
+            "diamond": 3
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card73",
+        "tier": "I",
+        "cost": {
+            "onyx": 3,
+            "diamond": 1,
+            "ruby": 1
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card74",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "sapphire": 2,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card75",
+        "tier": "I",
+        "cost": {
+            "onyx": 2,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card76",
+        "tier": "I",
+        "cost": {
+            "onyx": 1,
+            "diamond": 2,
+            "sapphire": 1,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card77",
+        "tier": "I",
+        "cost": {
+            "diamond": 1,
+            "ruby": 2,
+            "sapphire": 1,
+            "emerald": 1
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card78",
+        "tier": "I",
+        "cost": {
+            "diamond": 2,
+            "sapphire": 3
+        },
+        "points": 0,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card79",
+        "tier": "I",
+        "cost": {
+            "diamond": 4
+        },
+        "points": 1,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card80",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "diamond": 2,
+            "ruby": 2
+        },
+        "points": 1,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card80b",
+        "tier": "II",
+        "cost": {
+            "onyx": 3,
+            "sapphire": 3,
+            "ruby": 2
+        },
+        "points": 1,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card81",
+        "tier": "II",
+        "cost": {
+            "sapphire": 4,
+            "emerald": 2,
+            "diamond": 1
+        },
+        "points": 2,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card82",
+        "tier": "II",
+        "cost": {
+            "diamond": 3,
+            "onyx": 5
+        },
+        "points": 2,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card83",
+        "tier": "II",
+        "cost": {
+            "onyx": 5
+        },
+        "points": 2,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card84",
+        "tier": "II",
+        "cost": {
+            "ruby": 6
+        },
+        "points": 3,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card85",
+        "tier": "III",
+        "cost": {
+            "onyx": 3,
+            "sapphire": 5,
+            "emerald": 3,
+            "diamond": 3
+        },
+        "points": 3,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card86",
+        "tier": "III",
+        "cost": {
+            "emerald": 7
+        },
+        "points": 4,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card87",
+        "tier": "III",
+        "cost": {
+            "sapphire": 3,
+            "emerald": 6,
+            "ruby": 3
+        },
+        "points": 4,
+        "bonus": "ruby"
+    },
+    {
+        "card_id": "card88",
+        "tier": "III",
+        "cost": {
+            "ruby": 3,
+            "emerald": 7
+        },
+        "points": 5,
+        "bonus": "ruby"
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "noble_id": "noble1",
+        "requirements": {
+            "sapphire": 4,
+            "emerald": 4
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble2",
+        "requirements": {
+            "onyx": 4,
+            "ruby": 4
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble3",
+        "requirements": {
+            "ruby": 3,
+            "sapphire": 3,
+            "emerald": 3
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble4",
+        "requirements": {
+            "onyx": 3,
+            "ruby": 3,
+            "diamond": 3
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble5",
+        "requirements": {
+            "onyx": 3,
+            "ruby": 3,
+            "emerald": 3
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble6",
+        "requirements": {
+            "sapphire": 4,
+            "diamond": 4
+        },
+        "points": 3
+    },
+    
+    {
+        "noble_id": "noble7",
+        "requirements": {
+            "ruby": 4,
+            "emerald": 4
+        },
+        "points": 3
+    },
+    
+    {
+        "noble_id": "noble8",
+        "requirements": {
+            "emerald": 3,
+            "sapphire": 3,
+            "diamond": 3
+        },
+        "points": 3
+    },
+    
+    {
+        "noble_id": "noble9",
+        "requirements": {
+            "onyx": 3,
+            "sapphire": 3,
+            "diamond": 3
+        },
+        "points": 3
+    },
+    {
+        "noble_id": "noble10",
+        "requirements": {
+            "onyx": 4,
+            "diamond": 4
+        },
+        "points": 3
+    }
+]

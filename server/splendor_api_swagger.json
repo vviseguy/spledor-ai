@@ -1,0 +1,702 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Splendor Game API",
+    "description": "API for managing Splendor gameplay"
+  },
+  "host": "splendor-game.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/game": {
+      "post": {
+        "summary": "Create a new game",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "playerNames": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "List of player names to initialize the game."
+                },
+                "ruleset": {
+                  "$ref": "#/definitions/Ruleset",
+                  "description": "Optional ruleset object to customize game settings."
+                }
+              },
+              "required": [
+                "playerNames"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Game created successfully",
+            "schema": {
+              "$ref": "#/definitions/GameState"
+            }
+          }
+        }
+      }
+    },
+    "/game/{gameId}/start": {
+      "post": {
+        "summary": "Start the game",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game started successfully."
+          },
+          "400": {
+            "description": "Game cannot be started."
+          },
+          "404": {
+            "description": "Game not found."
+          }
+        }
+      }
+    },
+    "/game/{gameId}": {
+      "get": {
+        "summary": "Retrieve the current game state",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current game state retrieved.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gameState": {
+                  "$ref": "#/definitions/GameState"
+                },
+                "ruleset": {
+                  "$ref": "#/definitions/Ruleset",
+                  "description": "Optional ruleset used for this game."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game not found."
+          }
+        }
+      }
+    },
+    "/game/{gameId}/current-turn": {
+      "get": {
+        "summary": "Get the current player's turn",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the game."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the current player's turn.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "playerId": {
+                  "type": "string",
+                  "description": "The ID of the current player."
+                },
+                "playerIndex": {
+                  "type": "integer",
+                  "description": "The index of the current player in the players array."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game not found."
+          }
+        }
+      }
+    },
+    "/game/{gameId}/player": {
+      "post": {
+        "summary": "Register a new player in an existing game",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "playerName": {
+                  "type": "string",
+                  "description": "Name of the player to register."
+                }
+              },
+              "required": [
+                "playerName"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player registered successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "playerId": {
+                  "type": "string",
+                  "description": "Unique identifier for the player."
+                },
+                "authToken": {
+                  "type": "string",
+                  "description": "Authentication token for the player."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game not found"
+          }
+        }
+      }
+    },
+    "/game/{gameId}/move": {
+      "post": {
+        "summary": "Submit a move",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the game."
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Bearer token for player authentication."
+          },
+          {
+            "name": "move",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Move"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Move accepted"
+          },
+          "400": {
+            "description": "Invalid move",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Reason for invalid move."
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Unauthorized access message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/game/{gameId}/validate-move": {
+      "post": {
+        "summary": "Validate a move before submitting",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Bearer token for player authentication."
+          },
+          {
+            "name": "move",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Move"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Move is valid"
+          },
+          "400": {
+            "description": "Move is invalid"
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing token"
+          }
+        }
+      }
+    },
+    "/game/{gameId}/summary": {
+      "get": {
+        "summary": "Get game summary",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game summary returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "winner": {
+                  "type": "string",
+                  "description": "Name of the winning player."
+                },
+                "finalScores": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "description": "Final scores for each player."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deck/{cardId}": {
+      "get": {
+        "summary": "Get details of a specific card",
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Card details",
+            "schema": {
+              "$ref": "#/definitions/Card"
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/nobles/{nobleId}": {
+      "get": {
+        "summary": "Get details of a specific noble",
+        "parameters": [
+          {
+            "name": "nobleId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Noble details",
+            "schema": {
+              "$ref": "#/definitions/Noble"
+            }
+          },
+          "404": {
+            "description": "Noble not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Ruleset": {
+      "type": "object",
+      "description": "Ruleset defines the game constraints including token types and tiers.",
+      "properties": {
+        "deck": {
+          "$ref": "#/definitions/Deck",
+          "description": "Configuration for the card deck. The cards are grouped by tier."
+        },
+        "noble_deck": {
+          "$ref": "#/definitions/NobleDeck",
+          "description": "Configuration for the noble deck containing all nobles in the game."
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Noble"
+          }
+        }
+      }
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the rule, used as an identifier."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of what the rule does or enforces."
+        },
+        "rule_value": {
+          "type": "object",
+          "description": "The configurable value for the rule, which may vary based on rule type.",
+          "additionalProperties": {
+            "type": "integer",
+            "description": "Values associated with the rule, e.g., thresholds or limits."
+          },
+          "example": {
+            "gold": 5,
+            "diamond": 7,
+            "sapphire": 7,
+            "emerald": 7,
+            "rubym": 7,
+            "onyx": 7
+          }
+        }
+      },
+      "required": [
+        "name",
+        "rule_value"
+      ],
+      "example": {
+        "name": "TokenStackBoundsRule",
+        "description": "Maximum and minimum bounds for token stacks.",
+        "rule_value": {
+          "gold": 5,
+          "diamond": 7,
+          "sapphire": 7,
+          "emerald": 7,
+          "rubym": 7,
+          "onyx": 7
+        }
+      }
+    },
+    "Deck": {
+      "type": "object",
+      "properties": {
+        "tiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Card"
+            }
+          },
+          "description": "Cards organized by tiers."
+        }
+      }
+    },
+    "NobleDeck": {
+      "type": "object",
+      "properties": {
+        "nobles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Noble"
+          },
+          "description": "List of nobles in the noble deck."
+        }
+      }
+    },
+    "Card": {
+      "type": "object",
+      "properties": {
+        "cardId": {
+          "type": "string",
+          "description": "Unique identifier for the card."
+        },
+        "tier": {
+          "type": "string",
+          "description": "The tier of the card."
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "The cost to purchase the card, mapped by resource type."
+        },
+        "points": {
+          "type": "integer",
+          "description": "Victory points awarded by the card."
+        },
+        "bonus": {
+          "type": "string",
+          "description": "The bonus resource type provided by the card."
+        }
+      }
+    },
+    "Noble": {
+      "type": "object",
+      "properties": {
+        "nobleId": {
+          "type": "string",
+          "description": "Unique identifier for the noble."
+        },
+        "requirements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Requirements to claim the noble."
+        },
+        "points": {
+          "type": "integer",
+          "description": "Victory points awarded by the noble."
+        }
+      }
+    },
+    "GameState": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "description": "Unique identifier for the game instance."
+        },
+        "players": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerState"
+          },
+          "description": "List of players in the game. The order corresponds to the turn sequence, starting with the first player."
+        },
+        "boardState": {
+          "$ref": "#/definitions/BoardState",
+          "description": "The current state of the game board including available cards and tokens."
+        },
+        "currentTurn": {
+          "type": "integer",
+          "description": "Index of the current player in the players array."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "active",
+            "completed"
+          ],
+          "description": "Current status of the game."
+        }
+      }
+    },
+    "PlayerState": {
+      "type": "object",
+      "properties": {
+        "playerId": {
+          "type": "string",
+          "description": "Unique identifier for the player."
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Map of resource types to their quantities."
+        },
+        "reservedCards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of card IDs that the player has reserved."
+        },
+        "ownedCards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of card IDs that the player owns."
+        },
+        "noblesOwned": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of noble IDs owned by the player."
+        },
+        "score": {
+          "type": "integer",
+          "description": "The player\u2019s current score."
+        }
+      }
+    },
+    "BoardState": {
+      "type": "object",
+      "properties": {
+        "availableCards": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of card IDs for the specific tier."
+          },
+          "description": "Mapping of card tiers (e.g., tier1, tier2, tier3) to arrays of available card IDs."
+        },
+        "nobles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of noble IDs currently in the game."
+        },
+        "tokenBank": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Mapping of token types (a.k.a. resource types) to their available quantities."
+        }
+      }
+    },
+    "Move": {
+      "type": "object",
+      "description": "Details about a player\u2019s move in the game.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "buy_card",
+            "reserve_card",
+            "take_tokens"
+          ],
+          "description": "The type of move the player wishes to perform."
+        },
+        "details": {
+          "type": "object",
+          "oneOf": [
+            {
+              "properties": {
+                "cardId": {
+                  "type": "string",
+                  "description": "ID of the card to buy."
+                },
+                "payment": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "description": "Resource types and quantities used for payment."
+                },
+                "nobleChoice": {
+                  "type": "string",
+                  "description": "ID of the noble chosen, if applicable."
+                }
+              },
+              "required": [
+                "cardId",
+                "payment"
+              ]
+            },
+            {
+              "properties": {
+                "cardId": {
+                  "type": "string",
+                  "description": "ID of the card to reserve."
+                },
+                "tier": {
+                  "type": "string",
+                  "description": "Tier of the card to reserve."
+                }
+              },
+              "required": [
+                "cardId"
+              ]
+            },
+            {
+              "properties": {
+                "tokens": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "description": "Token types and quantities to take."
+                },
+                "discardedTokens": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "description": "Token types and quantities to discard, if total exceeds limit."
+                }
+              },
+              "required": [
+                "tokens"
+              ]
+            }
+          ],
+          "description": "Additional details required for the move, dependent on the action type."
+        }
+      }
+    }
+  }
+}

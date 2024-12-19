@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Splendor Game Client</title>
+<style>
+  body {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  h2 {
+    margin-top: 40px;
+  }
+  .section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 40px;
+  }
+  label {
+    display: inline-block;
+    width: 150px;
+  }
+  input, textarea {
+    margin-bottom: 10px;
+    width: 300px;
+  }
+  select {
+    width: 320px;
+  }
+  .result {
+    margin-top: 10px; 
+    padding: 10px; 
+    background: #f9f9f9; 
+    border: 1px solid #ccc; 
+    white-space: pre-wrap; 
+    max-width: 600px; 
+    overflow-x: auto;
+  }
+  button {
+    margin-top: 10px;
+    padding: 6px 12px;
+  }
+</style>
+</head>
+<body>
+<h1>Splendor Game Client</h1>
+
+<!-- Section: Create Game -->
+<div class="section">
+  <h2>Create a New Game</h2>
+  <p>Provide a list of player names to create a new game. Optionally provide a ruleset in JSON format.</p>
+  <label for="create-players">Player Names (comma separated):</label><br>
+  <input type="text" id="create-players" placeholder="e.g. Alice,Bob"/><br>
+  
+  <label for="create-ruleset">Ruleset (JSON, optional):</label><br>
+  <textarea id="create-ruleset" rows="5" placeholder='{}'></textarea><br>
+  
+  <button id="create-game-btn">Create Game</button>
+  
+  <div class="result" id="create-game-result"></div>
+</div>
+
+<!-- Section: Start Game -->
+<div class="section">
+  <h2>Start the Game</h2>
+  <p>Start the game once all players are registered.</p>
+  <label for="start-gameId">Game ID:</label><br>
+  <input type="text" id="start-gameId" placeholder="Game ID"/><br>
+  <button id="start-game-btn">Start Game</button>
+  
+  <div class="result" id="start-game-result"></div>
+</div>
+
+<!-- Section: Get Game State -->
+<div class="section">
+  <h2>Get Game State</h2>
+  <p>Retrieve the current state of the game.</p>
+  <label for="state-gameId">Game ID:</label><br>
+  <input type="text" id="state-gameId" placeholder="Game ID"/><br>
+  <button id="state-game-btn">Get State</button>
+  
+  <div class="result" id="state-game-result"></div>
+</div>
+
+<!-- Section: Get Current Turn -->
+<div class="section">
+  <h2>Get Current Turn</h2>
+  <p>Find out which player's turn it is.</p>
+  <label for="turn-gameId">Game ID:</label><br>
+  <input type="text" id="turn-gameId" placeholder="Game ID"/><br>
+  <button id="turn-game-btn">Get Current Turn</button>
+
+  <div class="result" id="turn-game-result"></div>
+</div>
+
+<!-- Section: Register Player -->
+<div class="section">
+  <h2>Register a Player</h2>
+  <p>Add a player to an existing game.</p>
+  <label for="reg-gameId">Game ID:</label><br>
+  <input type="text" id="reg-gameId" placeholder="Game ID"/><br>
+  <label for="reg-playerName">Player Name:</label><br>
+  <input type="text" id="reg-playerName" placeholder="New Player Name"/><br>
+  <button id="reg-player-btn">Register Player</button>
+  
+  <div class="result" id="reg-player-result"></div>
+</div>
+
+<!-- Section: Validate Move -->
+<div class="section">
+  <h2>Validate Move</h2>
+  <p>Check if a move is valid before submitting it.</p>
+  <label for="val-gameId">Game ID:</label><br>
+  <input type="text" id="val-gameId" placeholder="Game ID"/><br>
+  <label for="val-token">Authorization (Bearer Token):</label><br>
+  <input type="text" id="val-token" placeholder="Bearer xxxxxxx"/><br>
+  <label for="val-move">Move (JSON):</label><br>
+  <textarea id="val-move" rows="6" placeholder='{"action":"buy_card","details":{"cardId":"card123","payment":{"diamond":1}}}'></textarea><br>
+  <button id="val-move-btn">Validate Move</button>
+
+  <div class="result" id="val-move-result"></div>
+</div>
+
+<!-- Section: Submit Move -->
+<div class="section">
+  <h2>Submit Move</h2>
+  <p>Submit a move to the game.</p>
+  <label for="sub-gameId">Game ID:</label><br>
+  <input type="text" id="sub-gameId" placeholder="Game ID"/><br>
+  <label for="sub-token">Authorization (Bearer Token):</label><br>
+  <input type="text" id="sub-token" placeholder="Bearer xxxxxxx"/><br>
+  <label for="sub-move">Move (JSON):</label><br>
+  <textarea id="sub-move" rows="6" placeholder='{"action":"take_tokens","details":{"tokens":{"diamond":2}}}'></textarea><br>
+  <button id="sub-move-btn">Submit Move</button>
+  
+  <div class="result" id="sub-move-result"></div>
+</div>
+
+<!-- Section: Game Summary -->
+<div class="section">
+  <h2>Get Game Summary</h2>
+  <p>Get the final summary of the game (e.g., winner, final scores).</p>
+  <label for="summary-gameId">Game ID:</label><br>
+  <input type="text" id="summary-gameId" placeholder="Game ID"/><br>
+  <button id="summary-game-btn">Get Summary</button>
+  
+  <div class="result" id="summary-game-result"></div>
+</div>
+
+<!-- Section: Get Card Details -->
+<div class="section">
+  <h2>Get Card Details</h2>
+  <p>Fetch details of a specific card by its ID.</p>
+  <label for="card-cardId">Card ID:</label><br>
+  <input type="text" id="card-cardId" placeholder="Card ID"/><br>
+  <button id="card-details-btn">Get Card Details</button>
+  
+  <div class="result" id="card-details-result"></div>
+</div>
+
+<!-- Section: Get Noble Details -->
+<div class="section">
+  <h2>Get Noble Details</h2>
+  <p>Fetch details of a specific noble by its ID.</p>
+  <label for="noble-nobleId">Noble ID:</label><br>
+  <input type="text" id="noble-nobleId" placeholder="Noble ID"/><br>
+  <button id="noble-details-btn">Get Noble Details</button>
+  
+  <div class="result" id="noble-details-result"></div>
+</div>
+
+
+<script>
+// Adjust the base URL as needed
+const BASE_URL = "https://splendor-game.com/api";
+
+async function handleRequest(endpoint, method='GET', body=null, headers={}) {
+  try {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json', ...headers }
+    };
+    if (body) opts.body = JSON.stringify(body);
+
+    const res = await fetch(BASE_URL + endpoint, opts);
+    const text = await res.text();
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      json = text;
+    }
+    return { status: res.status, data: json };
+  } catch (error) {
+    return { error: error.message };
+  }
+}
+
+/* Create Game */
+document.getElementById("create-game-btn").addEventListener("click", async () => {
+  const players = document.getElementById("create-players").value.split(",").map(p => p.trim()).filter(Boolean);
+  let rulesetText = document.getElementById("create-ruleset").value.trim();
+  let ruleset = {};
+  if (rulesetText) {
+    try { ruleset = JSON.parse(rulesetText); } catch(e) { ruleset = {}; }
+  }
+
+  const {status, data, error} = await handleRequest("/game", 'POST', { playerNames: players, ruleset });
+  document.getElementById("create-game-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Start Game */
+document.getElementById("start-game-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("start-gameId").value.trim();
+  const {status, data, error} = await handleRequest(`/game/${gameId}/start`, 'POST');
+  document.getElementById("start-game-result").textContent = error ? error : `Status: ${status}\n${JSON.stringify(data, null, 2)}`;
+});
+
+/* Get Game State */
+document.getElementById("state-game-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("state-gameId").value.trim();
+  const {status, data, error} = await handleRequest(`/game/${gameId}`, 'GET');
+  document.getElementById("state-game-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Get Current Turn */
+document.getElementById("turn-game-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("turn-gameId").value.trim();
+  const {status, data, error} = await handleRequest(`/game/${gameId}/current-turn`, 'GET');
+  document.getElementById("turn-game-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Register Player */
+document.getElementById("reg-player-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("reg-gameId").value.trim();
+  const playerName = document.getElementById("reg-playerName").value.trim();
+  const {status, data, error} = await handleRequest(`/game/${gameId}/player`, 'POST', { playerName });
+  document.getElementById("reg-player-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Validate Move */
+document.getElementById("val-move-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("val-gameId").value.trim();
+  const token = document.getElementById("val-token").value.trim();
+  let moveData = {};
+  try {
+    moveData = JSON.parse(document.getElementById("val-move").value.trim());
+  } catch(e){
+    document.getElementById("val-move-result").textContent = "Invalid JSON in Move field.";
+    return;
+  }
+  const headers = token ? {Authorization: token} : {};
+  const {status, data, error} = await handleRequest(`/game/${gameId}/validate-move`, 'POST', moveData, headers);
+  document.getElementById("val-move-result").textContent = error ? error : `Status: ${status}\n${JSON.stringify(data, null, 2)}`;
+});
+
+/* Submit Move */
+document.getElementById("sub-move-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("sub-gameId").value.trim();
+  const token = document.getElementById("sub-token").value.trim();
+  let moveData = {};
+  try {
+    moveData = JSON.parse(document.getElementById("sub-move").value.trim());
+  } catch(e){
+    document.getElementById("sub-move-result").textContent = "Invalid JSON in Move field.";
+    return;
+  }
+  const headers = token ? {Authorization: token} : {};
+  const {status, data, error} = await handleRequest(`/game/${gameId}/move`, 'POST', moveData, headers);
+  document.getElementById("sub-move-result").textContent = error ? error : `Status: ${status}\n${JSON.stringify(data, null, 2)}`;
+});
+
+/* Get Game Summary */
+document.getElementById("summary-game-btn").addEventListener("click", async () => {
+  const gameId = document.getElementById("summary-gameId").value.trim();
+  const {status, data, error} = await handleRequest(`/game/${gameId}/summary`, 'GET');
+  document.getElementById("summary-game-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Get Card Details */
+document.getElementById("card-details-btn").addEventListener("click", async () => {
+  const cardId = document.getElementById("card-cardId").value.trim();
+  const {status, data, error} = await handleRequest(`/deck/${cardId}`, 'GET');
+  document.getElementById("card-details-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+
+/* Get Noble Details */
+document.getElementById("noble-details-btn").addEventListener("click", async () => {
+  const nobleId = document.getElementById("noble-nobleId").value.trim();
+  const {status, data, error} = await handleRequest(`/nobles/${nobleId}`, 'GET');
+  document.getElementById("noble-details-result").textContent = error ? error : JSON.stringify(data, null, 2);
+});
+</script>
+
+</body>
+</html>
